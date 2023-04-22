@@ -26,8 +26,10 @@ jobs:
           java-version: 11
 
       - name: Change wrapper permissions
-        run: chmod +x ./RandomScaleMachine/gradlew
+        working-directory: ./RandomScaleMachine
+        run: chmod +x ./gradlew
 
       # Run Build Project
       - name: Build gradle project
-        run: ./RandomScaleMachine/gradlew build
+        working-directory: ./RandomScaleMachine
+        run: ./gradlew build
