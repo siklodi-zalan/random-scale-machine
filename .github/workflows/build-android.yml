@@ -38,4 +38,4 @@ jobs:
 
       # Run Build Project
       - name: Build gradle project
-        run: ./RandomScaleMachine/gradlew build
+        run: gradlew build
