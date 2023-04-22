@@ -1,0 +1,35 @@
+name: Android CI
+
+env:
+  # The name of the main module repository
+  main_project_module: app
+
+on:
+  # Triggers the workflow on push or pull request events but only for default and protected branches
+  push:
+    branches: [ main, dev ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
+        with:
+          java-version: 17
+
+      - name: Change wrapper permissions
+        working-directory: ./RandomScaleMachine
+        run: chmod +x ./gradlew
+
+      # Run Build Project
+      - name: Build gradle project
+        working-directory: ./RandomScaleMachine
+        run: ./gradlew build
