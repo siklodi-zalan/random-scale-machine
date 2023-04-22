@@ -6,7 +6,7 @@ import androidx.activity.viewModels
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainAcitivity : ComponentActivity() {
+class MainActivity : ComponentActivity() {
     internal val viewModel: SessionViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
