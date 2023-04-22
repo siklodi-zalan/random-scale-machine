@@ -4,9 +4,6 @@ env:
   # The name of the main module repository
   main_project_module: ./RandomScaleMachine/app
 
-  # The name of the Play Store
-  playstore_name: Frogobox ID
-
 on:
   # Triggers the workflow on push or pull request events but only for default and protected branches
   push:
@@ -37,8 +34,8 @@ jobs:
           java-version: 11
 
       - name: Change wrapper permissions
-        run: chmod +x ./gradlew
+        run: chmod +x ./RandomScaleMachine/gradlew
 
       # Run Build Project
       - name: Build gradle project
-        run: ./gradlew build
+        run: ./RandomScaleMachine/gradlew build
