@@ -29,6 +29,6 @@ object PersistenceModule {
     @Provides
     @Singleton
     fun provideSessionDao(appDatabase: AppDatabase): SessionDao {
-        return appDatabase.posterDao()
+        return appDatabase.sessionDao()
     }
 }
