@@ -10,14 +10,17 @@ import com.example.randomscalemachine.model.Session
 interface SessionDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertSession(session: Session)
+    fun insertSession(session: Session)
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertSessionList(sessions: List<Session>)
 
     @Query("SELECT * FROM Session WHERE id = :id_")
-    suspend fun getSession(id_: Long): Session?
+    fun getSession(id_: String): Session
 
     @Query("SELECT * FROM Session")
-    suspend fun getSessionList(): List<Session>
+    fun getSessionList(): List<Session>
+
+    @Query("DELETE FROM Session")
+    fun deleteAll()
 }

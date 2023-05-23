@@ -3,6 +3,7 @@ package com.example.randomscalemachine.di
 import android.app.Application
 import androidx.room.Room
 import com.example.randomscalemachine.persistence.AppDatabase
+import com.example.randomscalemachine.persistence.Converters
 import com.example.randomscalemachine.persistence.SessionDao
 import dagger.Module
 import dagger.Provides
@@ -22,6 +23,7 @@ object PersistenceModule {
                 AppDatabase::class.java,
                 "SessionDatabase.db"
             )
+            .addTypeConverter(Converters())
             .fallbackToDestructiveMigration()
             .build()
     }
