@@ -46,7 +46,7 @@ fun SessionListScreen(viewModel: SessionListViewModel, toMain: () -> Unit) {
                             toMain()
                             viewModel.fetched.value = false
                         }
-                        .padding(horizontal = 7.7.dp)
+                        .padding(horizontal = 13.8.dp)
                         .width(65.dp)
                         .height(65.dp))
                 Divider(
@@ -58,7 +58,7 @@ fun SessionListScreen(viewModel: SessionListViewModel, toMain: () -> Unit) {
                 Row(modifier = Modifier.padding(horizontal = 5.dp, vertical = 10.dp)) {
                     GuitarString.values().forEach {
                         Text(text = it.toString(), fontSize = 35.sp,
-                            modifier = Modifier.padding(horizontal = 16.dp))
+                            modifier = Modifier.padding(horizontal = 17.9.dp))
                     }
                 }
             }
@@ -96,7 +96,7 @@ fun relativeTime(dateAsString: String): String {
     val period = Period.between(dateAsDate, today)
 
     if(period.days < 1)
-        return "Today"
+        return "Today."
 
     if(period.days == 1)
         return period.days.toString() + " day"

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "380665217572",
+    "project_id": "randomscalemachine",
+    "storage_bucket": "randomscalemachine.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:380665217572:android:89e6322be8000b18edceb1",
+        "android_client_info": {
+          "package_name": "com.example.randomscalemachine"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCNK9ZSAms-HGpD3Bl_zOu6b82Zt8Hp22g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

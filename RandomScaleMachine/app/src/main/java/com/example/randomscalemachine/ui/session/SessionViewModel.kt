@@ -12,13 +12,19 @@ import com.example.randomscalemachine.model.Note
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 import com.example.randomscalemachine.model.Result
+import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.logEvent
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.Locale
 
 @HiltViewModel
 class SessionViewModel @Inject constructor(
     private val sessionRepository: SessionRepository
 ) : ViewModel() {
     lateinit var connectivityManager: ConnectivityManager
+    lateinit var analytics: FirebaseAnalytics
 
     var screenState: MutableState<ScreenState>  = mutableStateOf(ScreenState.Main)
     var count: MutableState<Int> = mutableStateOf(0)
@@ -50,6 +56,10 @@ class SessionViewModel @Inject constructor(
         val activeNetworkInfo = connectivityManager.getActiveNetworkInfo()
         viewModelScope.launch {
             sessionRepository.saveSession(results = results, activeNetworkInfo != null && activeNetworkInfo.isConnected())
+            analytics.logEvent("session_saved") {
+                param("opened_at", LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH)));
+                param("internet_available", (activeNetworkInfo != null && activeNetworkInfo.isConnected()).toString())
+            }
         }
         reset()
     }

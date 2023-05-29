@@ -10,12 +10,15 @@ class SessionListRepository @Inject constructor(
     private val sessionDao: SessionDao
 ) {
     suspend fun fetchList(internetAvailable: Boolean): List<Session> {
+        var sessionList: MutableList<Session>
         if(internetAvailable){
-            val sessionList: List<Session> = sessionService.getSessionList()
+            sessionList = sessionService.getSessionList() as MutableList<Session>
             sessionDao.insertSessionList(sessionList)
-            return sessionList
         }
+        else
+            sessionList = sessionDao.getSessionList() as MutableList<Session>
 
-        return sessionDao.getSessionList()
+        sessionList.sortByDescending{it.date}
+        return sessionList
     }
 }
